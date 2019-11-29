@@ -1,0 +1,65 @@
+create	create
+create	create [type] name
+create	Create is a shell command that either creates a directory or a user data file.
+create	Accessing subdirectories by using the following syntax create [D | U]
+create	parent_directory/sub_directory
+create	Where type is as follows:
+create	type     description
+create	U        creates a user data file with given name.
+create	D        creates a directory with given name.
+
+open	open
+open	open [mode: I | O | U] name
+open	Open is a Unix shell command that opens a user data file in one of three modes.
+open	Associated with each open file is a pointer to the next byte to be read or written.
+open	Opening a file for input or update places the pointer at the first byte of the file, while
+open	opening a file for output places the pointer at the byte immediately after the last byte of
+open	the file.
+open	Mode    Description
+open	I       Input mode means that only READ and SEEK commands are permitted.
+open	O       Indicates output mode which means only a WRITE command is permitted.
+open	U       Indicates update mode which allows READ, WRITE, and SEEK commands.
+
+seek	seek
+seek	seek [base: -1 | 0 | 1] offset
+seek	Sets a file pointer to a given position in a file.
+seek	The following table describes the base parameter of the seek command:
+seek	base   description
+seek	-1     Set the position of the file pointer to the beginning of the file.
+seek	 0     Set the position of the file pointer to the current position of the file pointer.
+seek	 1     Set the position of the file pointer to the end of the file.
+seek	offset is an integer indicating the number of bytes from the ‘base’ that the file pointer should be moved.
+
+read	read
+read	read n
+read	This function reads n bytes of an open user data file. And advances the file
+read	pointer to the next read character in the file. This command may only be used between
+read	an OPEN ( in input or update mode) and the corresponding CLOSE command. If
+read	possible, ‘n’ bytes of data should be read and displayed. If fewer than ‘n’ bytes remain
+read	before the end of file, then those bytes should be read and displayed with a message
+read	indicating that the end of file was reached.
+
+write	write
+write	write n data
+write	This function writes n bytes of data to an open user data file. This
+write	command causes the first ‘n’ data bytes from ‘data’ to be written to the file. If fewer than
+write	‘n’ bytes are given, then append sufficient blanks to ‘data’ to make ‘n’ bytes. If it is
+write	impossible to write ‘n’ bytes (because the disk is full) then an appropriate message should
+write	be issued, but the command should be otherwise treated as if the largest possible value of
+write	‘n’ was specified.
+
+
+close	close
+close	close
+close	This function closes any open files. This command causes the last opened or created file to be closed.
+
+delete	delete
+delete	delete name
+delete	This command causes the named file or folder to be deleted. Deleting a
+delete	folder frees a directory entry while deleting a file frees a directory entry as well as frees
+delete	the sectors used by the data referenced by the user data file.
+
+
+java	java
+java	Java application_name
+java	This command executes the application software on its own thread.
