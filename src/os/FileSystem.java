@@ -52,7 +52,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-
 /**
  *  The FileSystem class has a main where it initializes a file system
  *  then starts a user command line interface, shell to simulate an
@@ -67,7 +66,7 @@ public class FileSystem
     static ArrayList<Sectors> sectors = new ArrayList<Sectors>();
     static Stack<Directory> openFiles = new Stack<Directory>();
     static Queue<Integer> freeSectors = new LinkedList<Integer>();
-    static char cr = '▼';
+    static char cr = '\31';                   //  '▼';
 
     static char openCreate; // 'O' or 'C'
     static char openMode;
@@ -143,8 +142,8 @@ public class FileSystem
      * the first free entry.
      * @author Sam Portillo
      * @param block is the selected Directory Block to start searching.
-     *              If this block is full & has a forwarding block then
-     *              searching will be rereferenced in this new block.
+     *              If this block is full and has a forwarding block then
+     *              searching will be re-referenced in this new block.
      * @return The first free entry within a directory.
      */
     private static Directory newDirectory(int block)
@@ -322,7 +321,6 @@ public class FileSystem
      * of file was reached.
      * @author Sam Portillo
      * @param n represents the number of bytes to be read.
-     * @return String relays screen output to the socket server.
      */
     private static void read(int n)
     {
@@ -563,9 +561,9 @@ public class FileSystem
     /**
      * The delete method is invoked by the shell.
      * It traverses the path of folders.
-     * Searches for & deletes the last folder or file.
+     * Searches for and deletes the last folder or file.
      * @author Sam Portillo
-     * @param name is the absolute path & folder or
+     * @param name is the absolute path and folder or
      *             file to delete.
      * @return  returns -1 → failure
      *                   1 → success
@@ -650,6 +648,7 @@ public class FileSystem
      * @author Sam Portillo
      * @param block is the current Directory block.
      * @param level is the depth of the path.
+     * @return sss String: this string is the entire directory structure.
      */
     private static String recursiveDir(int block, int level)
     {
@@ -701,7 +700,6 @@ public class FileSystem
      * It saves the current state of the file system
      * as a serialized file.
      * @author Sam Portillo
-     * @return void
      */
     private static void save()
     {
@@ -840,6 +838,14 @@ public class FileSystem
                     h.print(a[1]);
                     break;
 
+                case "java":
+                    //Thread t = new Thread();
+                    //A5.main(new String[0]);
+                    //A5 a5 = new A5();
+                    //JavaThis j = new JavaThis();
+                    //JavaThis.main( new String[0]);
+
+                    break;
 
                 case "exit":
                     System.out.println("Logged Out");
@@ -863,7 +869,9 @@ public class FileSystem
      * The terminal method is invoked by the main() method.
      * It simulates a shell for multi-user.
      * @author Sam Portillo
-     * @param String s is passed from the Terminal class.
+     * @param s is a String that is passed from the Terminal class.
+     * @return sss is a String is the response from the input parameter s.
+     *          This String is returned to the Terminal.
      */
     public static String socketTerminal(String s)
     {

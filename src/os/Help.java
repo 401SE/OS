@@ -6,20 +6,23 @@ import java.util.Scanner;
 
 
 /**
- * The Help class provides syntax & semantics
+ * The Help class provides syntax and semantics
  * for a given command.
  * @author Sam Portillo
  */
 public class Help
 {
     String help;
-    static char cr = '▼';           //  Alt 31
+    static char cr = '\31';       //'▼';           //  Alt 31
 
     /**
-     * It opens a help file & returns a filtered help result.
+     * It opens a help file and returns a filtered help result.
      * @author Sam Portillo
      * @param help is the user term that filters results for
      *             a specific command.
+     * @return sss this is a global string that is returned to the Terminal
+     * that is then relayed back to the client.
+     * It is in the format of a Unix man page.
      *
      */
     public static String print( String help )

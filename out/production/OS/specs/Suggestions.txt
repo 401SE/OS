@@ -1,0 +1,32 @@
+Unix Modules:
+cp, mv
+cd
+gui
+tcp/ip
+grep
+echo
+messaging
+multiuser
+multitasking
+notepad
+email
+browser
+gui file manager
+compiler
+imageviewer
+calculator
+PDF Viewer
+Bluetooth
+Mathematica
+Wolfram
+Game:	hangman, pacman, anagram
+	
+Clock, Alarm, Stopwatch
+Recycler
+ftp
+pipe
+Spreadsheet
+Code Beautifier
+contact list
+diff Checker
+Help

@@ -52,7 +52,6 @@ class Terminal extends Thread
 
     /**
      * This is the method to be overridden from the Thread class.
-     * @return void
      * @author Sam Portillo
      */
     @Override
