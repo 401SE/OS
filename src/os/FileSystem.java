@@ -51,6 +51,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+//  Delta Team Packages
+import TetripoffPack.*;
+
 
 /**
  *  The FileSystem class has a main where it initializes a file system
@@ -839,13 +842,26 @@ public class FileSystem
                     break;
 
                 case "java":
-                    //Thread t = new Thread();
+
                     //A5.main(new String[0]);
                     //A5 a5 = new A5();
                     //JavaThis j = new JavaThis();
                     //JavaThis.main( new String[0]);
 
-                    break;
+                    switch ( a[1] )
+                {
+                    case "tetripoff":
+                        System.out.println("tetripoff is running in a new window.");
+                        //Tetripoff.main(new String[0]);      // This kills parent process.
+                        Tetripoff t = new Tetripoff();
+                        break;
+
+                    default:
+                        System.out.println("Error: Could not find or load main class: Caused by: java.lang.ClassNotFoundException:");
+                        break;
+                }
+
+                        break;
 
                 case "exit":
                     System.out.println("Logged Out");
