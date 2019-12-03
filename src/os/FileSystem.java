@@ -55,6 +55,7 @@ import java.util.*;
 import tetripoff_pack.*;
 import calculator.*;
 import editor.*;
+import messenger.*;
 
 /**
  *  The FileSystem class has a main where it initializes a file system
@@ -865,6 +866,12 @@ public class FileSystem
                         System.out.println("tetripoff is running in a new window.");
                         Tetripoff.main(new String[0]);
                         break;
+
+                    case "messenger":
+                        System.out.println("messenger is running in a new window.");
+                        Main.main(new String[0]);
+                        break;
+
 
                     default:
                         System.out.println("Error: Could not find or load main class: Caused by: java.lang.ClassNotFoundException:");
