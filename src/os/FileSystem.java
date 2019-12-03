@@ -52,8 +52,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 //  Delta Team Packages
-import TetripoffPack.*;
-
+import tetripoff_pack.*;
+import calculator.*;
+import editor.*;
 
 /**
  *  The FileSystem class has a main where it initializes a file system
@@ -850,10 +851,19 @@ public class FileSystem
 
                     switch ( a[1] )
                 {
+                    case "teddy":
+                        System.out.println("Teddy is running in a new window.");
+                        EditorDelegate.main(new String[0]);
+                        break;
+
+                    case "bigcalc":
+                        System.out.println("BigCalc is running in a new window.");
+                        BigCalc.main(new String[0]);
+                        break;
+
                     case "tetripoff":
                         System.out.println("tetripoff is running in a new window.");
-                        //Tetripoff.main(new String[0]);      // This kills parent process.
-                        Tetripoff t = new Tetripoff();
+                        Tetripoff.main(new String[0]);
                         break;
 
                     default:

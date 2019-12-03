@@ -1,4 +1,4 @@
-package TetripoffPack;
+package tetripoff_pack;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,12 +13,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
-Very Heavy Influence from Jan Bodnar who created a tutorial on zetcode:
-http://zetcode.com/tutorials/javagamestutorial/tetris/ which taught me step by step
-how to recreate this game. Out of all the videos and tutorials, I found his/her's to be
-the simplest and easiest to understand.
-*/
+/** The Tetripoff class is the driver that initializes the UI to select various menu options.
+ *  It also allow the user to choose the difficulty of the game which is passed to the Board.
+ * @author Angelito Sabino
+ * with heavy influence from Jan Bodnar who created a tutorial on zetcode:
+ * http://zetcode.com/tutorials/javagamestutorial/tetris/ which taught me step by step
+ * how to recreate this game. Out of all the videos and tutorials, I found his/her's to be
+ * the simplest and easiest to understand.
+ * This class also incoporates JFrame which is currently part of what we are learning in my CS401 class.
+ */
 
 public class Tetripoff extends JFrame {
 
@@ -27,8 +30,60 @@ public class Tetripoff extends JFrame {
 
     int diffLev = 0;
 
-    public Tetripoff()
-    {
+    /**
+     * The Tetripoff constructor takes the difficulty level from the user and becomes a variable
+     * to be used when the board initializes the speed and calculates the score.
+     * @param df
+     */
+    public Tetripoff(int df) {
+        setDiffLev(df);
+        initUI();
+    }
+
+    /**
+     * setter method used for constructor to set the difficulty level that is to be passed to the Board.
+     * @param d
+     */
+    private void setDiffLev(int d){
+        this.diffLev = d;
+    }
+    private int getDiffLev(){
+        return this.diffLev;
+    }
+
+    /**
+     * This method initializes the User Interface using JFrame and contains buttons that pull up nested menus
+     * that contain functions and methods such as "Play" which allows the user to select the difficulty on
+     * the nested Menu.
+     */
+    private void initUI() {
+        statusbar = new JLabel(" 0");
+        add(statusbar, BorderLayout.SOUTH);
+        var board = new Board(this, diffLev);
+        add(board);
+        board.start();
+        setTitle("Tetripoff");
+        setSize(400, 800);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+
+    /**
+     * simple label used for updating the user at the bottom of the game status.
+     * i.e. "paused" or how many lines are currently cleared.
+     * @return
+     */
+    JLabel getStatusBar() {
+        return statusbar;
+    }
+
+    /**
+     * Main method used to start up the program and initializes the User Interface using JFrame and contains buttons
+     * that pull up nested menus that contain functions and methods such as "Play" which allows the user to select the
+     * difficulty on the nested Menu.
+     * @param args
+     */
+    public static void main(String[] args) {
         int ez = 600;
         int norm = 300;
         int hard = 150;
@@ -60,9 +115,10 @@ public class Tetripoff extends JFrame {
         bHowToPlay.setBounds(200, 400, 200, 80);
         bExit.setBounds(200, 550, 200, 80);
 
-        /** Difficulty Menu Pops up when you press the Play button */
+
         bPlay.addActionListener(new ActionListener() {
 
+            /** A Difficulty Menu "DiffMenu" Pops up when you press this Play button */
             @Override
             public void actionPerformed(ActionEvent arg0) {
 
@@ -87,6 +143,7 @@ public class Tetripoff extends JFrame {
 
                 // was trying to figure out how to do this in an easier way.
                 bEasy.addActionListener(new ActionListener() {
+                    /** The difficulty level passed into the Tetripoff Class is assigned to the ez variable*/
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
                         EventQueue.invokeLater(() -> {
@@ -95,6 +152,7 @@ public class Tetripoff extends JFrame {
                         });
                     }
                 });
+                /** The difficulty level passed into the Tetripoff Class is assigned to the norm variable*/
                 bNormal.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
@@ -104,6 +162,7 @@ public class Tetripoff extends JFrame {
                         });
                     }
                 });
+                /** The difficulty level int passed into the Tetripoff Class is assigned to the hard variable*/
                 bHard.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
@@ -117,8 +176,10 @@ public class Tetripoff extends JFrame {
         });
 
 
-
         bHowToPlay.addActionListener(new ActionListener() {
+            /** When the "How to Play button is selected, this function calls the "HowToPlay.txt" file and reads
+             * the text to instruct the player of the controls. If only i finished this in time.
+             */
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 EventQueue.invokeLater(() -> {
@@ -149,6 +210,12 @@ public class Tetripoff extends JFrame {
         });
 
         bHiScores.addActionListener(new ActionListener() {
+            /**
+             * when the "Hi Scores" Button is selected, this brings up a window that
+             * allows the user to read from the "HiScores.txt" file that has the names and scores of the
+             * players who saved their score after playing a single game.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 /*
@@ -163,14 +230,18 @@ public class Tetripoff extends JFrame {
                     String text = null;
                     while ((text = br.readLine()) != null)
                     {
-                        System.out.println(br.readLine() + " : " + br.readLine());
-                    }
-                    System.out.println("--------------");
-                } catch (IOException e1) {
+                            System.out.println(br.readLine() + " : " + br.readLine());
+                        }
+                        System.out.println("--------------");
+                    } catch (IOException e1) {
                     e1.printStackTrace();
                 }
             }
         });
+
+        /**
+         * as simple as it gets, this closes the main frame which closes the whole program.
+         */
         bExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -179,37 +250,6 @@ public class Tetripoff extends JFrame {
                 });
             }
         });
-
-    }
-
-
-    public Tetripoff(int df) {
-        setDiffLev(df);
-        initUI();
-    }
-
-    private void setDiffLev(int d){
-        this.diffLev = d;
-    }
-    private int getDiffLev(){
-        return this.diffLev;
-    }
-    private void initUI() {
-        statusbar = new JLabel(" 0");
-        add(statusbar, BorderLayout.SOUTH);
-        var board = new Board(this, diffLev);
-        add(board);
-        board.start();
-        setTitle("Tetripoff");
-        setSize(400, 800);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-    }
-    JLabel getStatusBar() {
-        return statusbar;
-    }
-    public static void main(String[] args) {
-        new Tetripoff();
     }
 }
 
