@@ -15,10 +15,10 @@ import java.util.List;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 /**
- * <h1>Authentication class</h1>
+ * Authentication class
  * This Authentication class add a layer of security into this application let user create new account and logging in the main UI.
- * <p>
- * <b>Note:</b> User must register a valid account with the database in order to log into the main application.
+ *
+ * Note: User must register a valid account with the database in order to log into the main application.
  *
  * @author  Anh Pham
  * @version 1.0

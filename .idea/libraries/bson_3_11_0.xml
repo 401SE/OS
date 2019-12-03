@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="bson-3.11.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Delta_Team/DeltaMessengerv1.0/mongodriver/bson-3.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Delta_Team/DeltaMessengerv1.0/mongodriver/mongodb-driver-3.11.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Delta_Team/DeltaMessengerv1.0/mongodriver/mongodb-driver-core-3.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
