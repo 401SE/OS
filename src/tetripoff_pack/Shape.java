@@ -45,7 +45,7 @@ public class Shape {
 
     /**
      * method called by initShape which sets the shape in relation to the board.
-     * @param shape
+     * @param shape ->          shape obeject to set the shape onto the board.
      */
     protected void setShape(Tetrominoe shape) {
         for (int i = 0; i < 4 ; i++) {
@@ -63,11 +63,21 @@ public class Shape {
     private void setY(int index, int y) {
         coords[index][1] = y;
     }
-    /** getter for x coord */
+
+    /**
+     * getter for x coordinate
+     * @param index         -> int index used for placement
+     * @return              -> int returned for x coordinates
+     */
     public int x(int index) {
         return coords[index][0];
     }
-    /** getter for x coord */
+
+    /**
+     * getter for y coordinate
+     * @param index         -> int index used for placement
+     * @return              -> int returned for y coordinates
+     */
     public int y(int index) {
         return coords[index][1];
     }

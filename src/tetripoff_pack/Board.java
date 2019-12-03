@@ -44,8 +44,8 @@ public class Board extends JPanel{
      * The constructor takes the Tetripoff Object parent passed by the driver class and the difficulty level to assign
      * the dropRate to a certain int. This is used to calculate the final score and to adjust the speed at which the
      * board repaints or how fast the blocks move.
-     * @param parent
-     * @param df
+     * @param parent        Tetripoff -> parent passed from Tetripoff Main Method function
+     * @param df            int -> id  value used to calculate score and dropRate speed
      */
     public Board(Tetripoff parent, int df) {
         this.dropRate = df;
@@ -56,7 +56,7 @@ public class Board extends JPanel{
      * This method initializes the board and is called by the Board Constructor. Basically does what is mentioned in
      * the constructor, but adds a JPanel status bar at the bottom which lets the player know the current game status
      * or how many lines they have cleared.
-     * @param parent
+     * @param parent        Tetripoff -> parent passed from Board Constructor
      */
     private void initBoard(Tetripoff parent) {
         setFocusable(true);
@@ -66,7 +66,7 @@ public class Board extends JPanel{
 
     /** Adjusts the square width size based on the Frame Size and the width of the frame which is based on the regular
      * tetris size of 10x24 and returns that as an integer
-     * @return
+     * @return              int -> that calculates size of block/square
      * */
     private int squareWidth() {
         return (int) getSize().getWidth() / BOARD_WIDTH;
@@ -74,7 +74,7 @@ public class Board extends JPanel{
 
     /**Adjusts the square height size based on the Frame Size and the height of the frame which is based on the regular
      * tetris size of 10x24 and returns that as an integer
-     * @return
+     * @return              int -> that calculates size of block/square
      */
     private int squareHeight() {
         return (int) getSize().getHeight() / BOARD_HEIGHT;
@@ -82,9 +82,9 @@ public class Board extends JPanel{
 
     /**
      *returns the shape at the coordinates passed into them by the shape and board.
-     * @param x
-     * @param y
-     * @return
+     * @param x             int -> x coordinate of table/shape
+     * @param y             int -> y coordinate of table/shape
+     * @return              board Tetrominoe new placed more
      */
     private Tetrominoe shapeAt(int x, int y) {
         return board[(y * BOARD_WIDTH) + x];
@@ -150,7 +150,7 @@ public class Board extends JPanel{
 
     /**
      * Method used to repaint the board graphics to represent an active game.
-     * @param g
+     * @param g             graphics object used to paint the board
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -161,7 +161,7 @@ public class Board extends JPanel{
     /**
      * The graphical part which paints the pieces onto the board to represent their position in the array and their
      * placement on the board.
-     * @param g
+     * @param g             graphisc object used to paint the board
      */
     private void doDrawing(Graphics g) {
         var size = getSize();
@@ -255,10 +255,10 @@ public class Board extends JPanel{
     /**
      * takes the new piece to be painted and determines whether it conflicts with another piece or the bottom.
      * if it can still move then it will repaint the new piece with it's new coordinates and.
-     * @param newPiece
-     * @param newX
-     * @param newY
-     * @return
+     * @param newPiece          Shape -> newpiece shape object passed to try placement of another piece on the board.
+     * @param newX              int -> newX integer used for the placement of the new piece ont he board
+     * @param newY              int -> newY integer used for the placement of next piece on the board.
+     * @return                  returns boolean value if the move will work or not to whatever called it.
      */
     private boolean tryMove(Shape newPiece, int newX, int newY) {
         for (int i = 0; i < 4; i++) {
@@ -315,10 +315,10 @@ public class Board extends JPanel{
      * of the pieces. I reflected the colors to match the original tetris block colors. it accepts graphics g as a
      * parameter as well as the x and y coordinates of the piece and it's shape. it then fills those blocks of the shape
      * accordingly.
-     * @param g
-     * @param x
-     * @param y
-     * @param shape
+     * @param g                 graphics -> object passed from the board to paint new board.
+     * @param x                 int -> used for block placement and where to color
+     * @param y                 int -> used for block placement and where to color
+     * @param shape             shape -> object passed to get shape of object and how to color.
      */
     private void drawSquare(Graphics g, int x, int y, Tetrominoe shape) {
         Color colors[] = {new Color(0, 0, 0),   // NOBlock
@@ -346,7 +346,7 @@ public class Board extends JPanel{
 
     /**
      * nested class used as an action listener to be called based on an event which updates the board and repaints
-     * it. this is constantly called again in order to constantly update the board based on the timer/droprate
+     * it. this is constantly called again in order to constantly update the board based on the timer/dropRate
      */
     private class GameCycle implements ActionListener {
         @Override
@@ -514,6 +514,7 @@ public class Board extends JPanel{
      * This class acts as a keyEvent Listener that waits for key presses from the keyboard which certain keys
      * are routed to their respective functions. There are many functions I had planned but i believe I hit the 500
      * Lines of code a while ago.
+     * @param 'e' -> keyevent passed to see which key was pressed and which function or method to call.
      */
     class TAdapter extends KeyAdapter {
         @Override

@@ -33,7 +33,7 @@ public class Tetripoff extends JFrame {
     /**
      * The Tetripoff constructor takes the difficulty level from the user and becomes a variable
      * to be used when the board initializes the speed and calculates the score.
-     * @param df
+     * @param df            -> Int df passed to indicate difficulty level to adjust score and speed
      */
     public Tetripoff(int df) {
         setDiffLev(df);
@@ -42,11 +42,17 @@ public class Tetripoff extends JFrame {
 
     /**
      * setter method used for constructor to set the difficulty level that is to be passed to the Board.
-     * @param d
+     * @param d             -> int passed to set the diffLev variable to what was thrown from the option chosen.
      */
     private void setDiffLev(int d){
         this.diffLev = d;
     }
+
+    /**
+     * getter of diffLev
+     * @return              -> return difficulty level integer to indicate which difficulty was used in hi scores.
+     * did not finish the implementation of this.
+     */
     private int getDiffLev(){
         return this.diffLev;
     }
@@ -81,7 +87,7 @@ public class Tetripoff extends JFrame {
      * Main method used to start up the program and initializes the User Interface using JFrame and contains buttons
      * that pull up nested menus that contain functions and methods such as "Play" which allows the user to select the
      * difficulty on the nested Menu.
-     * @param args
+     * @param args          -> uh. arguments?
      */
     public static void main(String[] args) {
         int ez = 600;
@@ -175,7 +181,6 @@ public class Tetripoff extends JFrame {
             }
         });
 
-
         bHowToPlay.addActionListener(new ActionListener() {
             /** When the "How to Play button is selected, this function calls the "HowToPlay.txt" file and reads
              * the text to instruct the player of the controls. If only i finished this in time.
@@ -214,7 +219,7 @@ public class Tetripoff extends JFrame {
              * when the "Hi Scores" Button is selected, this brings up a window that
              * allows the user to read from the "HiScores.txt" file that has the names and scores of the
              * players who saved their score after playing a single game.
-             * @param e
+             * @param e     Action event from button to output the HiScores
              */
             @Override
             public void actionPerformed(ActionEvent e) {
